@@ -3,8 +3,11 @@
   <%- include("../partials/head") %>
   <body>
     <div class="wrapper">
-      <%- include("../partials/header", { id :id }) %>
-      <p>ようこそ<%= name %>さん</p>
+      <h2>あなたの正答数は0です！！</h2>
+      <p>再度チャレンジしたい場合は以下をクリック</p>
+      <div class="buttons mt-3 is-centered">
+        <a href="/" class="button is-info">ホームへ戻る</a>
+      </div>
     </div>
   </body>
 </html>
