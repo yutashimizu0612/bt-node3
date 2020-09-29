@@ -3,7 +3,9 @@
   <%- include("../partials/head") %>
   <body>
     <div class="wrapper">
-      <h2 class="title">あなたの正答数は0です！！</h2>
+      <h2 class="title">
+        あなたの正答数は<%= numbersOfCorrectAnswer %>です！！
+      </h2>
       <p class="description">再度チャレンジしたい場合は以下をクリック</p>
       <div class="buttons mt-5">
         <a href="/" class="button is-info">ホームへ戻る</a>
