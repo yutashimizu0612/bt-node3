@@ -32,13 +32,8 @@
           const correctAnswer = document.getElementById('js-answer-buttons')
             .dataset.correctAnswer;
           if (selectedAnswer === correctAnswer) {
-            const currentCounter = localStorage.getItem('counter');
-            if (!currentCounter) {
-              localStorage.setItem('counter', '1');
-            } else {
-              const newCounter = parseInt(currentCounter) + 1;
-              localStorage.setItem('counter', newCounter.toString());
-            }
+            const newCounter = parseInt(localStorage.getItem('counter')) + 1;
+            localStorage.setItem('counter', newCounter.toString());
           }
         });
       });
