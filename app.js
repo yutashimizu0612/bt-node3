@@ -1,10 +1,8 @@
 const express = require('express');
 const { getQuizData } = require('./controllers/quiz');
-const { LocalStorage } = require('node-localstorage');
 
 const app = express();
 
-localStorage = new LocalStorage('./');
 exports.quizzes = [];
 
 app.set('view engine', 'ejs');
