@@ -28,7 +28,6 @@
     <script>
       document.querySelectorAll('.js-answer-button').forEach(button => {
         button.addEventListener('click', e => {
-          console.log('localStorage', localStorage.getItem('counter'));
           const selectedAnswer = e.target.dataset.answer;
           const correctAnswer = document.getElementById('js-answer-buttons')
             .dataset.correctAnswer;
