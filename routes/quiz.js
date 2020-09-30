@@ -4,7 +4,7 @@ const { showQuizPage } = require('../controllers/quiz');
 
 // 結果表示
 quizRouter.get('/result', async (req, res) => {
-  res.render('pages/result', { numbersOfCorrectAnswer: 10 });
+  res.render('pages/result');
 });
 
 // 各クイズページ

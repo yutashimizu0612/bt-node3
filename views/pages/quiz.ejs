@@ -9,21 +9,40 @@
         <li>[難易度]<%- quiz.difficulty %></li>
       </ul>
       <p class="description"><%- quiz.question %></p>
-      <div class="buttons mt-5">
+      <div
+        id="js-answer-buttons"
+        class="buttons mt-5"
+        data-correct-answer="<%= quiz.correctAnswer %>"
+      >
         <% quiz.answers.forEach((answer) => { %>
-        <!-- これだと遷移はするがonclickが動かない -->
-        <!-- <a href="/quiz/<%= next %>" class="button is-info onclick="checkQuizAnswer(answer, quiz.correctAnswer)">
-          <%- answer %>
-        </a> -->
-        <!-- 【TODO】次のクイズページ遷移 / クリックした回答と正解を照合してローカルストレージの正答数をインクリメント -->
-        <button
-          class="button is-info"
-          onclick="checkQuizAnswer(answer, quiz.correctAnswer, next, res)"
+        <a
+          href="/quiz/<%= next %>"
+          class="button is-info js-answer-button"
+          data-answer="<%= answer %>"
         >
           <%- answer %>
-        </button>
+        </a>
         <% }); %>
       </div>
     </div>
+    <script>
+      document.querySelectorAll('.js-answer-button').forEach(button => {
+        button.addEventListener('click', e => {
+          console.log('localStorage', localStorage.getItem('counter'));
+          const selectedAnswer = e.target.dataset.answer;
+          const correctAnswer = document.getElementById('js-answer-buttons')
+            .dataset.correctAnswer;
+          if (selectedAnswer === correctAnswer) {
+            const currentCounter = localStorage.getItem('counter');
+            if (!currentCounter) {
+              localStorage.setItem('counter', '1');
+            } else {
+              const newCounter = parseInt(currentCounter) + 1;
+              localStorage.setItem('counter', newCounter.toString());
+            }
+          }
+        });
+      });
+    </script>
   </body>
 </html>
