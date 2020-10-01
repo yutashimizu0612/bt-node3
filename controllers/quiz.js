@@ -17,8 +17,8 @@ exports.getQuizData = async () => {
     document.getElementById('title').textContent = '取得中';
     document.getElementById('description').textContent = '少々お待ちください';
     // クイズデータを取得
-    const response = await fetch(url + AMOUNT);
-    const data = await response.json();
+    const res = await fetch(url + AMOUNT);
+    const data = await res.json();
     app.quizzes = new Quiz(...data.results);
     return app.quizzes;
   } catch (error) {
