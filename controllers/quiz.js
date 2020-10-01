@@ -24,27 +24,6 @@ exports.getQuizData = async () => {
   } catch (error) {
     console.log(error);
   }
-  // got('http://localhost:3000')
-  //   .then(res => {
-  //     const { document } = new JSDOM(res.body.toString()).window;
-  //     console.log('document', document);
-  //     document.getElementById('title').textContent = '取得中';
-  //     document.getElementById('description').textContent = '少々お待ちください';
-  //     console.log(document.getElementById('title'));
-  //     console.log(document.getElementById('description'));
-  //     fetch(url + AMOUNT)
-  //       .then(res => {
-  //         const data = res.json();
-  //         app.quizzes = new Quiz(...data.results);
-  //         return app.quizzes;
-  //       })
-  //       .catch(error => {
-  //         console.log(error);
-  //       });
-  //   })
-  //   .catch(error => {
-  //     console.log(error);
-  //   });
 };
 
 exports.showQuizPage = (req, res) => {
