@@ -1,12 +1,22 @@
 const fetch = require('node-fetch');
 const app = require('../app');
 const { Quiz } = require('../models/Quiz');
+const jsdom = require('jsdom');
+const got = require('got');
 
 const url = 'https://opentdb.com/api.php?amount=';
 const AMOUNT = '10';
 
+const { JSDOM } = jsdom;
+
 exports.getQuizData = async () => {
   try {
+    // '/'のDOMを取得し、ロード中の表示に変更
+    const response = await got('http://localhost:3000');
+    const { document } = new JSDOM(response.body.toString()).window;
+    document.getElementById('title').textContent = '取得中';
+    document.getElementById('description').textContent = '少々お待ちください';
+    // クイズデータを取得
     const response = await fetch(url + AMOUNT);
     const data = await response.json();
     app.quizzes = new Quiz(...data.results);
@@ -14,6 +24,27 @@ exports.getQuizData = async () => {
   } catch (error) {
     console.log(error);
   }
+  // got('http://localhost:3000')
+  //   .then(res => {
+  //     const { document } = new JSDOM(res.body.toString()).window;
+  //     console.log('document', document);
+  //     document.getElementById('title').textContent = '取得中';
+  //     document.getElementById('description').textContent = '少々お待ちください';
+  //     console.log(document.getElementById('title'));
+  //     console.log(document.getElementById('description'));
+  //     fetch(url + AMOUNT)
+  //       .then(res => {
+  //         const data = res.json();
+  //         app.quizzes = new Quiz(...data.results);
+  //         return app.quizzes;
+  //       })
+  //       .catch(error => {
+  //         console.log(error);
+  //       });
+  //   })
+  //   .catch(error => {
+  //     console.log(error);
+  //   });
 };
 
 exports.showQuizPage = (req, res) => {
