@@ -13,7 +13,10 @@ app.use('/quiz', quizRouter);
 
 // トップページ
 app.get('/', (req, res) => {
-  res.render('pages/index');
+  res.render('pages/index', {
+    title: 'ようこそ',
+    description: '以下のボタンをクリック',
+  });
 });
 
 // クイズ開始

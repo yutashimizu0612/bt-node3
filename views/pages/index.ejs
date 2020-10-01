@@ -3,8 +3,8 @@
   <%- include("../partials/head") %>
   <body>
     <div class="wrapper">
-      <h2 class="title">ようこそ</h2>
-      <p class="description">以下のボタンをクリック</p>
+      <h2 id="title" class="title"><%= title %></h2>
+      <p id="description" class="description"><%= description %></p>
       <form class="buttons mt-5" action="/" method="post">
         <button class="button is-info" type="submit">開始</button>
       </form>
