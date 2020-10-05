@@ -7,8 +7,6 @@ const AMOUNT = '10';
 
 exports.getQuizData = async () => {
   try {
-    document.getElementById('title').textContent = '取得中';
-    document.getElementById('description').textContent = '少々お待ちください';
     // クイズデータを取得
     const res = await fetch(url + AMOUNT);
     const data = await res.json();
