@@ -17,7 +17,7 @@
         document.getElementById('title').textContent = '取得中';
         document.getElementById('description').textContent =
           '少々お待ちください';
-        // クイズデータの取得
+        // クイズデータの取得完了後、1問目へ遷移
         fetch('http://localhost:3000/quiz').then(() => {
           window.location.href = 'http://localhost:3000/quiz/1';
         });
