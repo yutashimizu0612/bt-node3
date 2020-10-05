@@ -5,27 +5,23 @@
     <div class="wrapper">
       <h2 id="title" class="title"><%= title %></h2>
       <p id="description" class="description"><%= description %></p>
-      <form class="buttons mt-5" action="/" method="post">
-        <button class="button is-info" type="submit">開始</button>
-      </form>
+      <div class="buttons mt-5">
+        <button id="start" class="button is-info">開始</button>
+      </div>
     </div>
     <script>
       localStorage.setItem('counter', '0');
-      // クイズデータ取得
-      fetch('https://opentdb.com/api.php?amount=10')
-        .then(response => {
-          document.getElementById('title').textContent = '取得中';
-          document.getElementById('description').textContent =
-            '少々お待ちください';
-          return response.json();
-        })
-        .then(data => {
-          const quizzes = new Quiz(...data.results);
-          console.log('data', data);
-        })
-        .catch(error => {
-          console.log(error);
+      // 開始ボタン押下
+      document.getElementById('start').addEventListener('click', () => {
+        // 取得中の表示
+        document.getElementById('title').textContent = '取得中';
+        document.getElementById('description').textContent =
+          '少々お待ちください';
+        // クイズデータの取得
+        fetch('http://localhost:3000/quiz').then(() => {
+          window.location.href = 'http://localhost:3000/quiz/1';
         });
+      });
     </script>
   </body>
 </html>
