@@ -1,5 +1,4 @@
 const express = require('express');
-const { getQuizData } = require('./controllers/quiz');
 
 const app = express();
 
@@ -17,12 +16,6 @@ app.get('/', (req, res) => {
     title: 'ようこそ',
     description: '以下のボタンをクリック',
   });
-});
-
-// クイズ開始
-app.post('/', async (req, res) => {
-  quizzes = await getQuizData();
-  res.redirect('/quiz/1');
 });
 
 app.listen(3000, function () {
