@@ -11,6 +11,21 @@
     </div>
     <script>
       localStorage.setItem('counter', '0');
+      // クイズデータ取得
+      fetch('https://opentdb.com/api.php?amount=10')
+        .then(response => {
+          document.getElementById('title').textContent = '取得中';
+          document.getElementById('description').textContent =
+            '少々お待ちください';
+          return response.json();
+        })
+        .then(data => {
+          const quizzes = new Quiz(...data.results);
+          console.log('data', data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
     </script>
   </body>
 </html>
