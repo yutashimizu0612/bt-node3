@@ -9,19 +9,6 @@
         <button id="start" class="button is-info">開始</button>
       </div>
     </div>
-    <script>
-      localStorage.setItem('counter', '0');
-      // 開始ボタン押下
-      document.getElementById('start').addEventListener('click', () => {
-        // 取得中の表示
-        document.getElementById('title').textContent = '取得中';
-        document.getElementById('description').textContent =
-          '少々お待ちください';
-        // クイズデータの取得完了後、1問目へ遷移
-        fetch('http://localhost:3000/quiz').then(() => {
-          window.location.href = 'http://localhost:3000/quiz/1';
-        });
-      });
-    </script>
+    <script src="/static/js/app.js"></script>
   </body>
 </html>

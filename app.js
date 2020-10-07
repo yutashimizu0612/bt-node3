@@ -6,6 +6,7 @@ exports.quizzes = [];
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
+app.use('/static', express.static(__dirname + '/static'));
 
 const quizRouter = require('./routes/quiz');
 app.use('/quiz', quizRouter);
