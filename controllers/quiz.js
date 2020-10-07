@@ -10,7 +10,10 @@ exports.getQuizData = async () => {
     // クイズデータを取得
     const res = await fetch(url + AMOUNT);
     const data = await res.json();
-    app.quizzes = new Quiz(...data.results);
+    data.results.forEach(quiz => {
+      quizInstance = new Quiz(quiz);
+      app.quizzes.push(quizInstance);
+    });
     return app.quizzes;
   } catch (error) {
     console.log(error);
@@ -19,7 +22,7 @@ exports.getQuizData = async () => {
 
 exports.showQuizPage = (req, res) => {
   const currentId = req.params.quizId;
-  const currentQuiz = app.quizzes['quiz' + currentId];
+  const currentQuiz = app.quizzes[parseInt(currentId - 1)];
   console.log('currentQuiz', currentQuiz);
   res.render('pages/quiz', {
     id: currentId,
