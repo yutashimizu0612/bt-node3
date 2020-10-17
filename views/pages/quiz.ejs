@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/head") %>
+  <body>
+    <div class="wrapper">
+      <h2 class="title">問題<%= id %></h2>
+      <ul>
+        <li>[ジャンル]<%- quiz.category %></li>
+        <li>[難易度]<%- quiz.difficulty %></li>
+      </ul>
+      <p class="description"><%- quiz.question %></p>
+      <div
+        id="js-answer-buttons"
+        class="buttons mt-5"
+        data-correct-answer="<%= quiz.correctAnswer %>"
+      >
+        <% quiz.answers.forEach((answer) => { %>
+        <a
+          href="/quiz/<%= next %>"
+          class="button is-info js-answer-button"
+          data-answer="<%= answer %>"
+        >
+          <%- answer %>
+        </a>
+        <% }); %>
+      </div>
+    </div>
+    <script src="/static/js/quiz.js"></script>
+  </body>
+</html>
